@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    *{
+        font-family: 'Hind Siliguri', sans-serif;
+    }
+</style>
+</head>
+<body>
+        
+    <section class="m-auto w-75">
+        <h1 class="text-center mt-3">ক্যারে বি.এম.আই মাপতে আইছোস?</h1>
+        <h3 class="text-center mt-3">এই মাল খান <a href="https://facebook.com/zisan465" title="জিসানের ফেসবুক এ যাইতে চাস?" target="_blank">জিসানের</a>  তৈরি!😊</h3>
+        <div class="cover m-auto">
+            <label for="weight" class="text-uppercase m-0 mt-4 font-weight-bold ">তোর ওজন কত রে?(KG)</label>
+            <input type="number" id="weight" class="form-control">
+
+            <label for="foot" class="text-uppercase m-0 mt-3 font-weight-bold">তুই কত লম্বা হইছস?(Foot)</label>
+            <input type="number" id="foot" class="form-control">
+
+            <label for="inch" class="text-uppercase m-0 mt-3 font-weight-bold">এইডাও দে মনু(Inch)</label>
+            <input type="number" id="inch" class="form-control">
+            <div class="text-center mt-3">
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter" onclick="onfunction()">
+                গুতা মার দেখতে হইলে!
+              </button>
+            </div>
+        </div>
+    </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center d-block ">
+          <h5 class="modal-title  " id="exampleModalLongTitle">এই লে হালা তোর বি.এম.আই </h5>
+        </div>  
+        <div class="modal-body">
+         <h1 id="result" class="d-inline" style="text-shadow:0px 0px 5px gold;color:rgb(0, 162, 255)"></h1><h3 id="range" class="float-right"></h3>
+        <h2 id="normal" class="mt-3 text-center"></h2> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">হালারে সরা সামনে থাইকা!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+
+       
+        function onfunction(){
+          let weight=  document.querySelector("#weight").value;
+          let foot=  document.querySelector("#foot").value;
+          let inch=  document.querySelector("#inch").value;
+          let mitar=((foot*12)+parseInt(inch))*0.0254;
+          let result=(weight/(mitar*mitar)).toFixed(2);
+        document.querySelector("#result").innerText=result;
+        let normal=document.querySelector("#normal")
+       let range= document.querySelector("#range");
+        if(result<18.5){
+            normal.innerText="তুই হালাই একটা আস্ত চিকনা! ঠিক মত খাওয়া দাওয়া করিস না! রাতে মনে হয় VPN USE করস?";
+            range.innerText="Underweight";
+            normal.style.color="#0091ff";
+            range.style.color="#0091ff";
+        }else if(result>=18.5 && result<=24.9){
+            normal.innerText="বাহ্ তোরেই তো জাতি খুজতাছে! একদম ঠিক আছে তোর বডি! এমন চালাইয়া যা-- ভালো বোউ পাবি!";
+            range.innerText="Normal";
+            normal.style.color="#34c400";
+            range.style.color="#34c400";
+        }else if(result>=25 && result<=29.9){
+            normal.innerText="তু্ই তো একটু আকটু মোটা হইয়া গেছস রে! খাওয়া দাওয়া একটু কম কইরা দে!";
+            range.innerText="Overweight";
+            normal.style.color="#e1ed00";
+            range.style.color="#e1ed00";
+        }
+        else if(result>=30 && result<=39.9){
+            normal.innerText="বাহ্! তুমিতো দেখতাসি খাইতে খাইতে জলহস্তি হইতাস! তা এমন চলতে থাকলে কী বিয়ে হবে? নাকি আগেই সেই কাম ঘটাই ফেলস। পারলে তুই আর খাস না! খাওয়া-দাওয়া ছেরে দে তো  তুই!";
+            range.innerText="Obese";
+            normal.style.color="#e39d07";
+            range.style.color="#e39d07";
+        }
+        else{
+            normal.innerText="ধুর মিয়া ঠিক করে লেখ?";
+            range.innerText="wrong"; 
+            normal.style.color="red";
+            range.style.color="red";
+        }
+
+        }
+
+</script>
+</body>
+</html>
